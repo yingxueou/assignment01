@@ -1,4 +1,4 @@
-name: Test Part 1 Query 06
+name: Test Query 09
 on:
   pull_request:
     branches: [ main ]
@@ -42,7 +42,7 @@ jobs:
     - name: Install GDAL (for ogr2ogr)
       run: sudo apt install gdal-bin -y
     - name: Load test data
-      run: __scripts__/part1_load_data.sh
+      run: __scripts___load_data.sh
     - name: Run tests
       run: |
-        npm test __tests__/test_part1_query06.js
+        npm test __tests__/test_query09.js
