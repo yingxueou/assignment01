@@ -39,3 +39,5 @@ create table indego.trips_2022_q3 (
     passholder_type text,
     bike_type text
 );
+
+create extension if not exists postgis;

@@ -18,7 +18,7 @@ jobs:
     # https://docs.github.com/en/actions/guides/creating-postgresql-service-containers
     services:
       postgres:
-        image: postgis
+        image: postgis/postgis
         env:
           POSTGRES_PASSWORD: postgres
         # Set health checks to wait until postgres has started
@@ -27,6 +27,8 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+        ports:
+          - 5432:5432
 
     steps:
     - uses: actions/checkout@v3
@@ -35,8 +37,12 @@ jobs:
       with:
         node-version: 16.x
         cache: 'npm'
-    - name: Install dependencies
+    - name: Install JS dependencies
       run: npm install
+    - name: Install GDAL (for ogr2ogr)
+      run: sudo apt install gdal-bin -y
+    - name: Load test data
+      run: __scripts__/part1_load_data.sh
     - name: Run tests
       run: |
         npm test --color=true __tests__/test_part1_query01.js
