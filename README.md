@@ -9,7 +9,7 @@
 
 All data is available from [Indego's Data site](https://www.rideindego.com/about/data/).
 
-Load all three datasets into a PostgreSQL database schema named `indego`. Your schema should have the following structure:
+Load all three datasets into a PostgreSQL database schema named `indego` (the name of your database is not important). Your schema should have the following structure:
 
 > This structure is important -- particularly the **table names** and the **lowercase field names**; if your queries are not built to work with this structure then _your assignment will fail the tests_.
 
@@ -43,7 +43,13 @@ Load all three datasets into a PostgreSQL database schema named `indego`. Your s
 
 ## Questions
 
-For each of the following questions, write a query that will generate the answer in the appropriate SQL file. Some of the questions will ask for an "**Answer:**" -- for those questions, update this readme file with the answer.
+Write a query to answer each of the questions below.
+* Your queries should produce results in the format specified.
+* Write your query in a SQL file corresponding to the question number (e.g. a file named _query06.sql_ for the answer to question #6).
+* Each SQL file should contain a single `SELECT` query.
+* Any SQL that does things other than retrieve data (e.g. SQL that creates indexes or update columns) should be in the _db_structure.sql_ file.
+* Some questions include a request for you to discuss your methods. Update this README file with your answers in the appropriate place.
+
 
 1. [How many bike trips in Q3 2021?](query01.sql)
 
