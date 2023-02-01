@@ -1,0 +1,42 @@
+name: Test Part 1 Query 01
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    # Use the postgis image to start a postgres service
+    #
+    # See the following links for more information:
+    # https://hub.docker.com/_/postgis
+    # https://docs.github.com/en/actions/guides/about-service-containers
+    # https://docs.github.com/en/actions/guides/creating-postgresql-service-containers
+    services:
+      postgres:
+        image: postgis
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Node.js 16.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16.x
+        cache: 'npm'
+    - name: Install dependencies
+      run: npm install
+    - name: Run tests
+      run: |
+        npm test --color=true __tests__/test_part1_query01.js
