@@ -42,7 +42,7 @@ jobs:
     - name: Install GDAL (for ogr2ogr)
       run: sudo apt install gdal-bin -y
     - name: Load test data
-      run: __scripts___load_data.sh
+      run: __scripts__/load_data.sh
     - name: Run tests
       run: |
         npm test __tests__/test_query07.js

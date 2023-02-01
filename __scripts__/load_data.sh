@@ -25,7 +25,7 @@ PGPASSWORD=postgres psql \
   -p 5432 \
   -U postgres \
   -d musa_509 \
-  -f "${SCRIPTDIR}/part1_create_trip_tables.sql"
+  -f "${SCRIPTDIR}/create_trip_tables.sql"
 
 # Load trip data into database
 PGPASSWORD=postgres psql \
