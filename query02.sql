@@ -10,7 +10,22 @@
 */
 
 -- Enter your SQL query here
+WITH  
+t1 AS (
+	SELECT COUNT (*)  AS one
+	FROM indego.trips_2021_q3 
+		),
+t2 AS (
+	 SELECT COUNT (*) AS TWO
+	 FROM indego.trips_2022_q3 
+),
+change AS (
+	SELECT (t2.two - t1.one)/t1.one::numeric AS change
+	FROM t1, t2
+)
 
+SELECT round(change.change*100, 2) AS perc_change
+FROM change
 
 
 /*
